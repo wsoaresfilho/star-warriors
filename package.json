@@ -15,7 +15,7 @@
     "react-test-renderer": "^16.11.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm install && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
