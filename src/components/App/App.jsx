@@ -1,20 +1,20 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Header from '../Header/Header';
-import Switch from '../Switch/Switch';
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
+import {
+    getDataFromLocalStorage,
+    saveDataToLocalStorage,
+} from '../../utils/localStorage';
 import './styles.css';
-
-const themes = {
-    LIGHT: 'light',
-    DARK: 'dark',
-};
+import themes from '../../enums';
 
 class App extends PureComponent {
     constructor(props) {
         super(props);
 
         this.state = {
-            userTheme: themes.LIGHT,
+            userTheme: getDataFromLocalStorage('theme'),
         };
 
         this.handleThemeChange = this.handleThemeChange.bind(this);
@@ -30,6 +30,7 @@ class App extends PureComponent {
         this.setState({
             userTheme,
         });
+        saveDataToLocalStorage('theme', userTheme);
     }
 
     render() {
@@ -47,7 +48,7 @@ class App extends PureComponent {
                 {userTheme !== '' && (
                     <div className='app-container'>
                         <div className='theme-switch'>
-                            <Switch
+                            <ThemeSwitch
                                 onChange={this.handleThemeChange}
                                 isChecked={!this.isLightTheme()}
                             />

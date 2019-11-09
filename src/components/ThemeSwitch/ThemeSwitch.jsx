@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import './styles.css';
 
-const PurpleSwitch = withStyles({
+const ColoredSwitch = withStyles({
     switchBase: {
         color: grey[700],
         '& + $track': {
@@ -24,7 +24,7 @@ const PurpleSwitch = withStyles({
     track: {},
 })(Switch);
 
-export default function CustomizedSwitches(props) {
+export default function ThemeSwitch(props) {
     const [customsProps, setCustomState] = React.useState(props);
 
     React.useEffect(() => {
@@ -46,7 +46,7 @@ export default function CustomizedSwitches(props) {
                 >
                     <Grid item>Light Theme</Grid>
                     <Grid item>
-                        <PurpleSwitch
+                        <ColoredSwitch
                             checked={customsProps.isChecked}
                             onChange={() => handleChange()}
                         />
