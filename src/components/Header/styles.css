@@ -1,0 +1,22 @@
+.header {
+  background-color: var(--header-bg-light-color);
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.header__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.header__logo {
+  max-height: 130px;
+}
