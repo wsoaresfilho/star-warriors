@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Header from '../Header/Header';
+import Switch from '../Switch/Switch';
 import './styles.css';
 
 const themes = {
@@ -15,11 +16,20 @@ class App extends PureComponent {
         this.state = {
             userTheme: themes.LIGHT,
         };
+
+        this.handleThemeChange = this.handleThemeChange.bind(this);
     }
 
     isLightTheme() {
         const { userTheme } = this.state;
         return userTheme === themes.LIGHT;
+    }
+
+    handleThemeChange() {
+        const userTheme = this.isLightTheme() ? themes.DARK : themes.LIGHT;
+        this.setState({
+            userTheme,
+        });
     }
 
     render() {
@@ -29,13 +39,20 @@ class App extends PureComponent {
             light: userTheme === themes.LIGHT,
             dark: userTheme === themes.DARK,
         });
-        const logo = this.isLightTheme ? 'logo-yellow.svg' : 'logo-black.svg';
+        const logo = this.isLightTheme() ? 'logo-yellow.svg' : 'logo-black.svg';
 
         return (
             <div className={appClassnames}>
                 <Header logo={logo} />
                 {userTheme !== '' && (
-                    <div className='app-container'>Container</div>
+                    <div className='app-container'>
+                        <div className='theme-switch'>
+                            <Switch
+                                onChange={this.handleThemeChange}
+                                isChecked={!this.isLightTheme()}
+                            />
+                        </div>
+                    </div>
                 )}
             </div>
         );
