@@ -8,24 +8,26 @@ export const getDataFromApi = async url => {
     return myJson;
 };
 
-export const getImageByTerm = async imageTerm => {
-    const response = await fetch(`${googleImgApi}${encodeURI(imageTerm)}`);
-    const myJson = await response.json();
-    return myJson;
-};
-
 export const getImageByTermFake = () => {
     const response = new Promise(resolve => {
         setTimeout(() => {
             resolve({
                 items: [
                     {
-                        link:
-                            'https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/C-3PO_droid.png/220px-C-3PO_droid.png',
+                        link: 'logo-black.svg',
                     },
                 ],
             });
-        }, 300);
+        }, 100);
     });
     return response;
+};
+
+export const getImageByTerm = async imageTerm => {
+    const response = await fetch(`${googleImgApi}${encodeURI(imageTerm)}`);
+    if (response.status >= 400) {
+        return getImageByTermFake();
+    }
+    const myJson = await response.json();
+    return myJson;
 };

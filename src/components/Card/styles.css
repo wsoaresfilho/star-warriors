@@ -1,23 +1,55 @@
+:root {
+  --dark-card-bg: #3c2c00;
+  --light-card-bg: #fdde82;
+}
+
 .cards-container {
   display: flex;
-  width: 800px;
+  width: 100%;
   flex-direction: row;
   overflow: auto;
   flex-wrap: wrap;
-  margin: auto;
-  height: calc(100vh - 220px);
+  margin: 0 auto 10px;
+  height: calc(100vh - 250px);
+  justify-content: center;
 }
 
-.card__container {
-  width: calc(100% / 2 - 20px);
-  margin: 10px;
+.cards-container__title {
+  text-align: center;
+  margin: 0 0 15px;
+  color: var(--dark-bg-color);
 }
 
-.card__content {
-  padding: 32px 5px;
+.dark .cards-container__title {
+  color: var(--light-bg-color);
 }
 
-.card__image {
+.card-container {
+  width: calc(100% / 3 - 20px);
+  margin: 0px 10px 20px;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+  background-color: var(--light-card-bg);
+  min-width: 300px;
+}
+
+.dark .card-container {
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(165, 165, 165, 0.5);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(165, 165, 165, 0.5);
+  box-shadow: 0px 0px 5px 1px rgba(165, 165, 165, 0.5);
+  background-color: var(--dark-card-bg);
+}
+
+.card-content {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.card-container__image {
   width: 100%;
   height: 300px;
   background-color: gray;
@@ -25,7 +57,7 @@
   display: flex;
 }
 
-.card__image img {
+.card-container__image img {
   max-width: 100%;
   width: auto;
   min-height: 100%;
@@ -36,7 +68,6 @@
 
 .loading {
   width: 100%;
-  height: calc(100vh - 220px);
   text-align: center;
   position: relative;
   margin-left: -20px;
@@ -73,4 +104,94 @@
 
 .dark .cards-container::-webkit-scrollbar-thumb {
   background-color: var(--light-bg-color);
+}
+
+.card-content__title {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 5px auto 10px;
+  color: var(--dark-bg-color);
+}
+
+.dark .card-content__title {
+  color: var(--light-bg-color);
+}
+
+.card-content__panel {
+  margin-bottom: 12px;
+  overflow: auto;
+  padding-right: 2px;
+  font-size: 0.9em;
+}
+
+.card-content__panel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--light-bg-color);
+}
+
+.dark .card-content__panel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(149, 149, 149, 0.3);
+  box-shadow: inset 0 0 6px rgba(149, 149, 149, 0.3);
+  background-color: var(--dark-bg-color);
+}
+
+.card-content__panel::-webkit-scrollbar {
+  width: 7px;
+}
+
+.card-content__panel::-webkit-scrollbar-thumb {
+  background-color: var(--dark-bg-color);
+}
+
+.dark .card-content__panel::-webkit-scrollbar-thumb {
+  background-color: var(--light-bg-color);
+}
+
+.card-content__panel-nostarships {
+  text-align: center;
+}
+
+.card-content__info {
+  margin-bottom: 5px;
+}
+
+.card-content__panel-starships {
+  margin-bottom: 15px;
+}
+
+.card-content__panel-starships .card-content__info {
+  font-size: 0.8em;
+}
+
+.card-content__panel-starships .card-content__info:first-child {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 0.9em;
+}
+
+.card-content__panel-switch {
+  display: flex;
+  justify-content: center;
+}
+
+.card-content__panel-switch .MuiGrid-item {
+  font-size: 0.8em;
+  line-height: 0.8em;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  body {
+    font-size: 14px;
+  }
+
+  .card-container {
+    min-width: 280px;
+  }
 }

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Header from '../Header/Header';
 import CardsContainer from '../Card/CardsContainer';
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
+import CustomSwitch from '../CustomSwitch/CustomSwitch';
 import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
@@ -47,13 +47,16 @@ class App extends PureComponent {
             <div className={appClassnames}>
                 <Header logo={logo} />
                 <div className='app-container'>
+                    <CardsContainer />
                     <div className='theme-switch'>
-                        <ThemeSwitch
+                        <CustomSwitch
                             onChange={this.handleThemeChange}
                             isChecked={!this.isLightTheme()}
+                            isSmall={false}
+                            leftText='Light Theme'
+                            rightText='Dark Theme'
                         />
                     </div>
-                    <CardsContainer />
                 </div>
             </div>
         );

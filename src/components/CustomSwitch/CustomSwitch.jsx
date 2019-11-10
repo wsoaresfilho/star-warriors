@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { yellow, grey } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -24,7 +25,7 @@ const ColoredSwitch = withStyles({
     track: {},
 })(Switch);
 
-export default function ThemeSwitch(props) {
+export default function CustomSwitch(props) {
     const [customsProps, setCustomState] = React.useState(props);
 
     React.useEffect(() => {
@@ -35,8 +36,15 @@ export default function ThemeSwitch(props) {
         customsProps.onChange();
     };
 
+    const size = customsProps.isSmall ? 'small' : 'medium';
+    const switchClassnames = classNames({
+        'custom-switch': true,
+        small: customsProps.isSmall,
+        medium: !customsProps.isSmall,
+    });
+
     return (
-        <FormGroup>
+        <FormGroup className={switchClassnames}>
             <Typography component='div'>
                 <Grid
                     component='label'
@@ -44,14 +52,15 @@ export default function ThemeSwitch(props) {
                     alignItems='center'
                     spacing={1}
                 >
-                    <Grid item>Light Theme</Grid>
+                    <Grid item>{customsProps.leftText}</Grid>
                     <Grid item>
                         <ColoredSwitch
                             checked={customsProps.isChecked}
                             onChange={() => handleChange()}
+                            size={size}
                         />
                     </Grid>
-                    <Grid item>Dark Theme</Grid>
+                    <Grid item>{customsProps.rightText}</Grid>
                 </Grid>
             </Typography>
         </FormGroup>

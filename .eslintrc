@@ -14,7 +14,8 @@
         "jsx-a11y/label-has-associated-control": "off",
         "no-console": "off",
         "react/jsx-curly-newline": "off",
-        "react/jsx-props-no-spreading": [0]
+        "react/jsx-props-no-spreading": [0],
+        "camelcase": [0]
     },
     "env": {
         "browser": true,

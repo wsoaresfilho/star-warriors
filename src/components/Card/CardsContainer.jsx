@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Card from './Card';
-import { getDataFromApi, getImageByTermFake } from '../../api/api';
+import { getDataFromApi, getImageByTerm } from '../../api/api';
+import getIntFromString from '../../utils/helpers';
 
 class CardsContainer extends PureComponent {
     constructor(props) {
@@ -11,6 +12,7 @@ class CardsContainer extends PureComponent {
             isFetching: false,
             next: null,
             addedCardsNum: 0,
+            starshipsMap: new Map(),
         };
     }
 
@@ -21,7 +23,7 @@ class CardsContainer extends PureComponent {
     componentDidUpdate() {
         const { cards, isFetching } = this.state;
         if (cards.length > 0 && !isFetching) {
-            this.startLazyLoading();
+            this.startLazyLoadingCards();
         }
     }
 
@@ -37,14 +39,14 @@ class CardsContainer extends PureComponent {
     async fetchCards() {
         this.setState({ isFetching: true });
 
-        const { next: link, cards } = this.state;
+        const { next: link, cards, starshipsMap } = this.state;
         const people = await getDataFromApi(link);
         const { results, next } = people;
 
         if (results.length > 0) {
             const updatedResults = await Promise.all(
                 results.map(async res => {
-                    const imageResp = await getImageByTermFake(res.name);
+                    const imageResp = await getImageByTerm(res.name);
                     const imageUrl =
                         imageResp.items && imageResp.items.length > 0
                             ? imageResp.items[0].link
@@ -53,20 +55,31 @@ class CardsContainer extends PureComponent {
 
                     const starshipsDetails = await Promise.all(
                         starships.map(async sts => {
-                            const starshipsResp = await getDataFromApi(sts);
-                            return starshipsResp;
+                            const starShipId = getIntFromString(sts);
+                            const stsMap = starshipsMap.has(starShipId);
+                            if (stsMap) {
+                                return starshipsMap.get(starShipId);
+                            }
+
+                            const newStarship = await getDataFromApi(sts);
+                            this.setState({
+                                starshipsMap: starshipsMap.set(
+                                    starShipId,
+                                    newStarship
+                                ),
+                            });
+                            return newStarship;
                         })
                     );
 
-                    const teste = {
+                    const updatedRes = {
                         ...res,
                         imgUrl: imageUrl,
                         starshipsDetails,
                     };
-                    return teste;
+                    return updatedRes;
                 })
             );
-            console.warn(updatedResults);
 
             this.setState({
                 cards: cards.concat(updatedResults),
@@ -77,7 +90,7 @@ class CardsContainer extends PureComponent {
         }
     }
 
-    startLazyLoading() {
+    startLazyLoadingCards() {
         const { next, addedCardsNum } = this.state;
         const elements = [].slice.call(
             document.querySelectorAll('.cards-container img')
@@ -108,12 +121,15 @@ class CardsContainer extends PureComponent {
     render() {
         const { cards } = this.state;
         return (
-            <div className='cards-container'>
-                {cards.map(card => {
-                    const props = card;
-                    return <Card key={card.name} {...props} />;
-                })}
-                {this.getLoadingElement()}
+            <div className='cards-main'>
+                <h1 className='cards-container__title'>Star Wars Characters</h1>
+                <div className='cards-container'>
+                    {cards.map(card => {
+                        const props = card;
+                        return <Card key={card.name} {...props} />;
+                    })}
+                    {this.getLoadingElement()}
+                </div>
             </div>
         );
     }
