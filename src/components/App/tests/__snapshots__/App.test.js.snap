@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component when changes to dark theme snapshot correctly 1`] = `ReactWrapper {}`;
+
+exports[`App component when initializes should render snapshot correctly 1`] = `ReactWrapper {}`;

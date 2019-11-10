@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component when changes to starship panel snapshot correctly 1`] = `ReactWrapper {}`;
+
+exports[`Card component when initializes should render snapshot correctly 1`] = `ReactWrapper {}`;

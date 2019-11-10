@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardsContainer component when fetching should render snapshot correctly 1`] = `ReactWrapper {}`;
+
+exports[`CardsContainer component when initializes should render snapshot correctly 1`] = `ReactWrapper {}`;

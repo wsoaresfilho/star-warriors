@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import ThemeSwitch from '../CustomSwitch/CustomSwitch';
+import CustomSwitch from '../CustomSwitch/CustomSwitch';
 import './styles.css';
 
 class Card extends PureComponent {
@@ -41,7 +41,7 @@ class Card extends PureComponent {
                 <div className='card-content'>
                     <h1 className='card-content__title'>{name}</h1>
                     {isInPersonalPanel && (
-                        <div className='card-content__panel'>
+                        <div className='card-content__panel personal'>
                             <div className='card-content__info'>{`Gender: ${gender}`}</div>
                             <div className='card-content__info'>{`Birth Year: ${birth_year}`}</div>
                             <div className='card-content__info'>{`Height: ${height} cm`}</div>
@@ -75,7 +75,7 @@ class Card extends PureComponent {
                         </div>
                     )}
                     <div className='card-content__panel-switch'>
-                        <ThemeSwitch
+                        <CustomSwitch
                             onChange={this.handlePanelChange}
                             isChecked={!isInPersonalPanel}
                             isSmall
@@ -100,6 +100,9 @@ Card.propTypes = {
         PropTypes.shape({
             name: PropTypes.string,
             model: PropTypes.string,
+            starship_class: PropTypes.string,
+            passengers: PropTypes.string,
+            length: PropTypes.string,
         })
     ).isRequired,
 };
