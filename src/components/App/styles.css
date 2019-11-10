@@ -2,7 +2,8 @@
   max-width: var(--container-max-width);
   margin: auto;
   padding: 120px 20px 60px;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 200px);
+  margin-bottom: 20px;
 }
 
 .app {

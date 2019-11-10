@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Header from '../Header/Header';
+import CardsContainer from '../Card/CardsContainer';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import {
     getDataFromLocalStorage,
@@ -45,16 +46,15 @@ class App extends PureComponent {
         return (
             <div className={appClassnames}>
                 <Header logo={logo} />
-                {userTheme !== '' && (
-                    <div className='app-container'>
-                        <div className='theme-switch'>
-                            <ThemeSwitch
-                                onChange={this.handleThemeChange}
-                                isChecked={!this.isLightTheme()}
-                            />
-                        </div>
+                <div className='app-container'>
+                    <div className='theme-switch'>
+                        <ThemeSwitch
+                            onChange={this.handleThemeChange}
+                            isChecked={!this.isLightTheme()}
+                        />
                     </div>
-                )}
+                    <CardsContainer />
+                </div>
             </div>
         );
     }
