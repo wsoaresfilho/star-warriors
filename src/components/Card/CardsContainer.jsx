@@ -119,11 +119,16 @@ class CardsContainer extends PureComponent {
     }
 
     render() {
-        const { cards } = this.state;
+        const { cards, isFetching } = this.state;
         return (
             <div className='cards-main'>
                 <h1 className='cards-container__title'>Star Wars Characters</h1>
                 <div className='cards-container'>
+                    {!isFetching && cards.length === 0 && (
+                        <div className='cards-container_empty'>
+                            There are no cards to be shown
+                        </div>
+                    )}
                     {cards.map(card => {
                         const props = card;
                         return <Card key={card.name} {...props} />;

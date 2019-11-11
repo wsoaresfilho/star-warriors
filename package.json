@@ -21,7 +21,8 @@
     "test:watch": "react-scripts test --watchAll",
     "test:coverage": "npm test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^3.6.1",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
