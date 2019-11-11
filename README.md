@@ -1,68 +1,58 @@
+# Star Wars Characters App
+
+This project was created as a requirement for a job interview.
+
+It is a React Application that shows cards of Star Wars Characters from an API. It lazy loads the list of characters, and gets the card images using the Search Google API.
+
+## Features:
+
+-   Shows Star Wars character cards got from an API
+-   Lazy loads the cards 10 by 10 on scrolling of the cards list
+-   Get card images from the Search Google API based on the character name and add into the card
+-   Theme switch that togles between 2 different styling themes: Light and Dark
+-   The theme chosen and all the transactions registered are saved in browser's localSorage
+
+## Future features:
+
+-   Add filters
+-   Add new ways of showing more characters data (tabs, sliders, ...)
+-   Show card detail page by clicking on a card
+
+## Development tools used:
+
+For Unit Tests, this project uses:
+
+-   [Jest](https://jestjs.io/): JavaScript Testing Framework
+-   [Enzyme](https://airbnb.io/enzyme/): JavaScript Testing utility for React that makes it easier to test your React Components' output
+
+For E2E Tests, this project uses:
+
+-   [Cypress](https://www.cypress.io/): A JavaScript E2E Testing Framework for testing anything that runs in a browser.
+
+For development optimization and code quality assurance, this tools are also used:
+
+-   [Prettier](https://prettier.io/): An code formatter that integrates with most editors, helps saving time and keep code style consistent
+-   [ESLint](https://eslint.org/): ESLint is tool created to provide a pluggable linting utility for JavaScript
+-   [Husky](https://www.npmjs.com/package/husky): Creates Git hooks in an easy way preventing bad commits and bad pushes.
+
+Husky was configured to run Pretty and ESLint in pre commit git hook and to run Unit Tests in pre push git hook
+
+## Running the app in development mode:
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Make sure that you have NodeJS installed: `node -v`
 
-In the project directory, you can run:
+Running the app on a local server: `npm start`
 
-### `npm start`
+### In the project directory, you can:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Run Unit tests: `npm test`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Run Unit tests and generate code coverage: `npm run test:coverage`
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Run E2E tests: `npm run cypress:open` (needs to have the app running already)
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Find nore about this subject in here: https://facebook.github.io/create-react-app/docs/deployment
