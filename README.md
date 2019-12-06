@@ -2,7 +2,9 @@
 
 This project was created as a requirement for a job interview.
 
-It is a React Application that shows cards of Star Wars Characters from an API. It lazy loads the list of characters, and gets the card images using the Search Google API.
+It is a React Application that shows cards of Star Wars Characters from an API. It lazy loads the list of characters, and gets the card images using the Google Search API.
+
+OBS.: For the Google Serach API feature works, a key has to be added into the code.
 
 ## Features:
 
