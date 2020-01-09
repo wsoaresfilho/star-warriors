@@ -1,6 +1,9 @@
-// Google Search API Key (gsak) has to be added down here
+// For showing the characters images, both keys (gsak and cx) have to be added down here
+// Google Search API Key (gsak)
 const gsak = '';
-const ckk = '002028002876040441306:7gjv47i0lhn';
+// Custom search engine ID Key (cx)
+const ckk = '';
+
 const apiBase = 'https://swapi.co/api';
 const googleImgApi = `https://www.googleapis.com/customsearch/v1?key=${gsak}&cx=${ckk}&searchType=image&imgSize=large&imgType=photo&num=1&q=`;
 

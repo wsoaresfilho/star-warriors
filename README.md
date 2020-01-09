@@ -4,12 +4,12 @@ This project was created as a requirement for a job interview.
 
 It is a React Application that shows cards of Star Wars Characters from an API. It lazy loads the list of characters, and gets the card images using the Google Search API.
 
-OBS.: For the Google Serach API feature works, a key has to be added into the code.
+OBS.: For the Google Serach API feature to work, its keys (gsak and cx) have to be added into the code (src/api/api.js)
 
 ## Features:
 
--   Shows Star Wars character cards got from an API
--   Lazy loads the cards 10 by 10 on scrolling of the cards list
+-   Shows Star Wars character cards from an API
+-   Lazy loads the cards 10 by 10 on scrolling of the cards list (infinite scroll)
 -   Get card images from the Search Google API based on the character name and add into the card
 -   Theme switch that togles between 2 different styling themes: Light and Dark
 -   The theme chosen and all the transactions registered are saved in browser's localSorage
